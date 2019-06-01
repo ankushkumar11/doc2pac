@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Dockerfile to Packer</h2>
+
+<p>Dockerfile</p>
+
+FROM <input id="numb">
+<br>
+<br>
+<button type="button" onclick="myFunction()">Submit</button>
+
+<br>
+<br>
+<p>Packer Template</p>
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var obj = { type: "docker", image: "ubuntu" };
+  x=document.getElementById("numb").value
+  if (x != "") {
+    obj.image=x
+  }
+  var myJSON = JSON.stringify(obj);
+  document.getElementById("demo").innerHTML = myJSON  
+}
+</script>
+
+</body>
+</html> 
