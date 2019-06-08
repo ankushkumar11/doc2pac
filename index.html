@@ -4,11 +4,22 @@
 
 <h2>Dockerfile to Packer</h2>
 
+  <input type="radio" name="sample" value="commit"> commit
+  <input type="radio" name="sample" value="discard"> discard
+  <input type="radio" name="sample" value="export_path" onclick="Function1()"> export_path<br> <br>
+
 <p>Dockerfile</p>
 
 FROM <input id="numb">
 <br>
 <br>
+
+<div id="abc" style="display: none">
+EXPORT_PATH <input id="export">
+<br>
+<br>
+</div>
+
 <button type="button" onclick="myFunction()">Submit</button>
 
 <br>
@@ -17,16 +28,23 @@ FROM <input id="numb">
 <p id="demo"></p>
 
 <script>
+var obj = { type: "docker", image: "ubuntu" };
 function myFunction() {
-  var obj = { type: "docker", image: "ubuntu" };
   x=document.getElementById("numb").value
   if (x != "") {
     obj.image=x
   }
+  if (document.getElementById('abc').style.display === "block") {
+    obj["export_path"]=document.getElementById("export").value
+  }
   var myJSON = JSON.stringify(obj);
   document.getElementById("demo").innerHTML = myJSON  
+}
+
+
+function Function1() {
+  document.getElementById('abc').style.display = "block";
 }
 </script>
 
 </body>
-</html> 
